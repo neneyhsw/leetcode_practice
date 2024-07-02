@@ -4,13 +4,26 @@ using namespace std;
 class Solution {
 public:
     long long maximumImportance(int n, vector<vector<int>>& roads) {
-        vector<pair<int, int>> v(n);
-        //for (auto road : roads) {
-            //v[road[0]] = {};
-            //v[road[1]]++;
-        //}
-        //sort()
-        return 0;
+      long long ans = 0;
+      vector<int> v(n);
+
+      for (vector<int> road : roads) {
+        v[road[0]]++;
+        v[road[1]]++;
+      }
+
+      vector<int> c(n);
+      for (int i = 0; i < n; i++) {
+        c[i] = i;
+      }
+      sort(c.begin(), c.end(), [&](int a, int b) {
+        return v[a] > v[b];
+      });
+
+      for (int i = 0; i < n; i++) {
+        ans += (long long) (n - i) * v[c[i]];
+      }
+      return ans;
     }
 };
 
@@ -22,15 +35,6 @@ int main(int argc, char *argv[]) {
   int n = 5;
 
   cout << S.maximumImportance(n, roads) << endl;
-
-  pair<int, int> p;
-  p = {
-    1, 0
-  };
-  p[1].second++;
-
-  cout << p.first << ", " << p.second << endl;
-
 
   return 0;
 }
