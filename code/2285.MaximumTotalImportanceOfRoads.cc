@@ -20,6 +20,10 @@ public:
         return v[a] > v[b];
       });
 
+      //for (int i = 0; i < n; i++) {
+      //  cout << "index " << i << ": " << v[i] << ", " << c[i] << endl;
+      //}
+
       for (int i = 0; i < n; i++) {
         ans += (long long) (n - i) * v[c[i]];
       }
@@ -29,8 +33,11 @@ public:
 
 int main(int argc, char *argv[]) {
   Solution S;
+  //vector<vector<int>> roads = {
+  //  {0, 3}, {2, 4}, {1, 3}
+  //};
   vector<vector<int>> roads = {
-    {0, 3}, {2, 4}, {1, 3}
+    {0, 1}, {1, 2}, {2, 3}, {0, 2}, {1, 3}, {2, 4}
   };
   int n = 5;
 
