@@ -3,6 +3,19 @@ using namespace std;
 
 class Solution {
 public:
+
+    void generateSubstrings(const std::string& s, size_t start, size_t end, std::vector<std::string>& substrings) {
+        if (start >= s.size()) {
+            return;
+        }
+        if (end == s.size()) {
+            generateSubstrings(s, start + 1, start + 1, substrings);
+            return;
+        }
+        substrings.push_back(s.substr(start, end - start + 1));
+        generateSubstrings(s, start, end + 1, substrings);
+    }
+
     vector<string> all_subarr(string s) {
       vector<string> substrings;
       for (int start = 0; start < s.size(); ++start) {
