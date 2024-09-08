@@ -5,10 +5,13 @@ class Solution {
 public:
     vector<int> findWordsContaining(vector<string>& words, char x) {
         vector<int> ans;
-        for (int i = 0; i < words.size(); i++) {
-            if (words[i].find(x) != std::string::npos) {
+        int i = 0;
+
+        for (string s : words) {
+            if (s.find(x) != string::npos) {
                 ans.push_back(i);
             }
+            i++;
         }
         return ans;
     }
@@ -17,16 +20,15 @@ public:
 int main(int argc, char *argv[]) {
   Solution S;
   vector<string> words = {
-    "abc","bcd","aaaa","cbc"
+    {"abc", "bcd", "aaaa", "cbc"}
   };
-  char x = 'c';
-
+  char x = 'a';
   vector<int> ans = S.findWordsContaining(words, x);
-  for (auto i : ans) {
+
+  for (int i : ans) {
     cout << i << ", ";
   }
   cout << endl;
-
 
   return 0;
 }
